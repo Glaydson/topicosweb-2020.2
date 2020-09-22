@@ -6,6 +6,10 @@ import { Component } from '@angular/core';
 })
 export class ListaProdutosComponent {
     tituloPagina: String = "Lista de Produtos";
+    larguraImagem: number = 50;
+    margemImagem: number = 2;
+    exibirImagem: boolean = true;
+    filtroLista: string = 'carrinho';
 
     produtos: any[] = [
         {
@@ -59,5 +63,9 @@ export class ListaProdutosComponent {
             "urlImagem": "https://openclipart.org/image/300px/svg_to_png/120337/xbox-controller_01.png"
           }
     ]
+
+    alternarImagem(): void {
+      this.exibirImagem = !this.exibirImagem;
+    }
 
 }

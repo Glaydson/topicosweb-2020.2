@@ -6,12 +6,12 @@
         <div class="row">
             <div class="col-md-2">Filtrar por:</div>
             <div class="col-md-4">
-                <input type="text"/>
+                <input type="text" [(ngModel)] = "filtroLista"/>
             </div>
         </div>
         <div class="row">
             <div class="col-md-2">
-                <h4>Filtrado por:</h4>
+                <h4>Filtrado por: {{filtroLista}}</h4>
             </div>
         </div>
         <div class="table-responsive">
@@ -19,8 +19,9 @@
                 <thead>
                     <tr>
                         <th>
-                            <button class="btn btn-primary">
-                                Exibir Imagem
+                            <button class="btn btn-primary"
+                                (click) = "alternarImagem()">
+                                {{exibirImagem ? 'Esconder' : 'Exibir'}} Imagem
                             </button>
                         </th>
                         <th>Produto</th>
@@ -32,11 +33,18 @@
                 </thead>
                 <tbody>
                     <tr *ngFor='let produto of produtos'>
-                        <td></td>
+                        <td>
+                            <img *ngIf='exibirImagem' 
+                                [src] = 'produto.urlImagem'
+                                [alt] = 'produto.nomeProduto'
+                                [style.width.px] = 'larguraImagem'
+                                [style.margin.px] = 'margemImagem'
+                                >
+                        </td>
                         <td>{{produto.nomeProduto}}</td>
-                        <td>{{produto.codigoProduto}}</td>
+                        <td>{{produto.codigoProduto | lowercase}}</td>
                         <td>{{produto.dataLancamento}}</td>
-                        <td>{{produto.preco}}</td>
+                        <td>{{produto.preco | currency: 'BRL' : 'symbol' : '1.2-2'}}</td>
                         <td>{{produto.rating}}</td>                  
                     </tr>
                 </tbody>
