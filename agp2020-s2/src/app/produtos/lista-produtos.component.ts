@@ -1,17 +1,31 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+
+import { IProduto } from './produto';
 
 @Component({
     selector: "gp-produtos",
-    templateUrl: "./lista-produtos.component.html"
+    templateUrl: "./lista-produtos.component.html",
+    styleUrls:['./lista-produtos.component.css']
 })
-export class ListaProdutosComponent {
+export class ListaProdutosComponent implements OnInit {
+   
     tituloPagina: String = "Lista de Produtos";
     larguraImagem: number = 50;
     margemImagem: number = 2;
     exibirImagem: boolean = true;
-    filtroLista: string = 'carrinho';
+    _filtroLista: string = 'carrinho';
 
-    produtos: any[] = [
+    get filtroLista() : string {
+      return this._filtroLista;
+    }
+    set filtroLista(valor: string) {
+      this._filtroLista = valor;
+      this.produtosFiltrados = this.filtroLista ? this.executarFiltro(this.filtroLista) : this.produtos;
+    }
+
+    produtosFiltrados: IProduto[];
+
+    produtos: IProduto[] = [
         {
             "produtoId": 1,
             "nomeProduto": "Ancinho",
@@ -64,8 +78,24 @@ export class ListaProdutosComponent {
           }
     ]
 
+    constructor() {
+      this.produtosFiltrados = this.produtos;
+      this.filtroLista = 'carrinho';
+    }
+
+    ngOnInit(): void {
+      console.log("Passei na inicialização do OnInit")
+    }
+
     alternarImagem(): void {
       this.exibirImagem = !this.exibirImagem;
     }
+
+    executarFiltro(filtrarPor: string): IProduto[] {
+      filtrarPor = filtrarPor.toLocaleLowerCase();
+      return this.produtos.filter((produto: IProduto) => 
+        produto.nomeProduto.toLocaleLowerCase().indexOf(filtrarPor) !== -1);
+    }
+
 
 }

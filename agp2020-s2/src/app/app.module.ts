@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaProdutosComponent } from './produtos/lista-produtos.component';
 import { FormsModule } from '@angular/forms';
+import { ConverteParaEspacoPipe } from './compartilhado/converte-para-espaco.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaProdutosComponent,
+    ConverteParaEspacoPipe
   ],
   imports: [
     BrowserModule,

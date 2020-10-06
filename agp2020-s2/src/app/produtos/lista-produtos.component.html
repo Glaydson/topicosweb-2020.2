@@ -32,7 +32,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr *ngFor='let produto of produtos'>
+                    <tr *ngFor='let produto of produtosFiltrados'>
                         <td>
                             <img *ngIf='exibirImagem' 
                                 [src] = 'produto.urlImagem'
@@ -42,7 +42,7 @@
                                 >
                         </td>
                         <td>{{produto.nomeProduto}}</td>
-                        <td>{{produto.codigoProduto | lowercase}}</td>
+                        <td>{{produto.codigoProduto | lowercase | converteParaEspaco: '-'}}</td>
                         <td>{{produto.dataLancamento}}</td>
                         <td>{{produto.preco | currency: 'BRL' : 'symbol' : '1.2-2'}}</td>
                         <td>{{produto.rating}}</td>                  
