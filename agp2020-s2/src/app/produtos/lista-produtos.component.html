@@ -45,7 +45,12 @@
                         <td>{{produto.codigoProduto | lowercase | converteParaEspaco: '-'}}</td>
                         <td>{{produto.dataLancamento}}</td>
                         <td>{{produto.preco | currency: 'BRL' : 'symbol' : '1.2-2'}}</td>
-                        <td>{{produto.rating}}</td>                  
+                        <td>
+                            <gp-star 
+                                [rating] = 'produto.rating'
+                                (ratingClicado) = 'onRatingClicado($event)'
+                            ></gp-star>
+                        </td>                  
                     </tr>
                 </tbody>
             </table>

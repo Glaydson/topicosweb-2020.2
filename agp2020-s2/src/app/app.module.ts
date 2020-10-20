@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaProdutosComponent } from './produtos/lista-produtos.component';
+import { RatingComponent } from './compartilhado/rating.component';
 import { FormsModule } from '@angular/forms';
 import { ConverteParaEspacoPipe } from './compartilhado/converte-para-espaco.pipe';
 
@@ -11,7 +12,8 @@ import { ConverteParaEspacoPipe } from './compartilhado/converte-para-espaco.pip
   declarations: [
     AppComponent,
     ListaProdutosComponent,
-    ConverteParaEspacoPipe
+    ConverteParaEspacoPipe,
+    RatingComponent,
   ],
   imports: [
     BrowserModule,

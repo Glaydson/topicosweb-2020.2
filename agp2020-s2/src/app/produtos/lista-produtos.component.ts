@@ -97,5 +97,9 @@ export class ListaProdutosComponent implements OnInit {
         produto.nomeProduto.toLocaleLowerCase().indexOf(filtrarPor) !== -1);
     }
 
+    onRatingClicado(mensagem: string): void {
+      this.tituloPagina = "Lista de Produtos - " + mensagem;
+    }
+
 
 }
