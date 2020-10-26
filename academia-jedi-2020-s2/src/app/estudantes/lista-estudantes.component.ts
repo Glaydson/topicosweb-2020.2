@@ -6,7 +6,11 @@ import { Component } from '@angular/core';
 })
 export class ListaEstudantesComponent {
     tituloPagina: string = "Lista de Estudantes"
-
+    larguraImagem: number = 50;
+    margemImagem: number = 2;
+    exibirImagem: boolean = true;
+    filtroLista: string = 'luke';
+    
     estudantes: any[] = [
         {
             "id": 1,
@@ -237,5 +241,9 @@ export class ListaEstudantesComponent {
             "url": "./assets/imagens/palpatine.jpg"
         }
       ]
+
+      alternarImagem(): void {
+        this.exibirImagem = !this.exibirImagem;
+      }
       
 }
