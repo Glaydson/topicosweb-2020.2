@@ -28,13 +28,26 @@ export class ListaProdutosComponent implements OnInit {
 
   produtos: IProduto[] = []
 
+  mensagemErro: string;
+
   constructor(private produtoServico: ProdutoService) {
   }
 
   ngOnInit() {
-    this.produtos = this.produtoServico.getProdutos();
+    this.getProdutos();
     this.produtosFiltrados = this.produtos;
   }
+
+  getProdutos(): void {
+    this.produtoServico.getProdutos().subscribe(
+      produtos => {
+        this.produtos = produtos;
+        this.produtosFiltrados = this.produtos;
+      },
+      error => this.mensagemErro = <any>error
+    );
+  }
+
 
 
   alternarImagem(): void {
