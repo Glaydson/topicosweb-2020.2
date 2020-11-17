@@ -1,17 +1,32 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { IEstudante } from './estudante';
 
 @Component({
     selector: "jedi-estudantes",
-    templateUrl: "./lista-estudantes.component.html"
+    templateUrl: "./lista-estudantes.component.html",
+    styleUrls: ['./lista-estudantes.component.css']
 })
-export class ListaEstudantesComponent {
+export class ListaEstudantesComponent implements OnInit {
     tituloPagina: string = "Lista de Estudantes"
     larguraImagem: number = 50;
     margemImagem: number = 2;
     exibirImagem: boolean = true;
-    filtroLista: string = 'luke';
+
+    _filtroLista: string;
+    get filtroLista() : string {
+      return this._filtroLista;
+    }
+    set filtroLista(valor: string) {
+      this._filtroLista = valor;
+      this.estudantesFiltrados = this.filtroLista ? this.executarFiltro(this.filtroLista) : this.estudantes;
+    }
+
+    estudantesFiltrados: IEstudante[];
+
+    alturaMaxima: number;
+    alturasEstudantes: number[];
     
-    estudantes: any[] = [
+    estudantes: IEstudante[] = [
         {
             "id": 1,
             "nome": "Luke Skywalker",
@@ -242,8 +257,25 @@ export class ListaEstudantesComponent {
         }
       ]
 
-      alternarImagem(): void {
+    constructor() {
+        this.filtroLista = 'Luke';
+    }
+      
+    ngOnInit() {
+        this.alturasEstudantes = this.estudantes.map(e => e.altura);
+        this.alturaMaxima = Math.max(...this.alturasEstudantes);
+        this.estudantesFiltrados = this.estudantes;
+    }
+
+    alternarImagem(): void {
         this.exibirImagem = !this.exibirImagem;
-      }
+    }
+
+    executarFiltro(filtrarPor: string): IEstudante[] {
+        filtrarPor = filtrarPor.toLocaleLowerCase();
+        return this.estudantes.filter((estudante: IEstudante) => 
+          estudante.nome.toLocaleLowerCase().indexOf(filtrarPor) !== -1);
+    }
+  
       
 }

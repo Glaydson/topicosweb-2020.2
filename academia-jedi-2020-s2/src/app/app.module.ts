@@ -4,12 +4,16 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListaEstudantesComponent } from './estudantes/lista-estudantes.component';
+import { SexoPipe } from './compartilhado/sexo-pipe';
+import { AlturaComponent } from './compartilhado/altura.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListaEstudantesComponent,
+    SexoPipe,
+    AlturaComponent,
   ],
   imports: [
     BrowserModule,
