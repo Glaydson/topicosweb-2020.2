@@ -4,7 +4,6 @@ import { IProduto } from './produto';
 import { ProdutoService } from './produto.service'
 
 @Component({
-  selector: "gp-produtos",
   templateUrl: "./lista-produtos.component.html",
   styleUrls: ['./lista-produtos.component.css']
 })

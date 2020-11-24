@@ -8,6 +8,9 @@ import { ListaProdutosComponent } from './produtos/lista-produtos.component';
 import { RatingComponent } from './compartilhado/rating.component';
 import { FormsModule } from '@angular/forms';
 import { ConverteParaEspacoPipe } from './compartilhado/converte-para-espaco.pipe';
+import { ProdutoDetalheComponent } from './produtos/produto-detalhe.component';
+import { BemVindoComponent } from './home/bem-vindo.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,21 @@ import { ConverteParaEspacoPipe } from './compartilhado/converte-para-espaco.pip
     ListaProdutosComponent,
     ConverteParaEspacoPipe,
     RatingComponent,
+    ProdutoDetalheComponent,
+    BemVindoComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'produtos', component: ListaProdutosComponent },
+      { path: 'produtos/:id', component: ProdutoDetalheComponent },
+      { path: 'bemvindo', component: BemVindoComponent },
+      { path: '', redirectTo: 'bemvindo', pathMatch: 'full'},
+      { path: '**', redirectTo: 'bemvindo', pathMatch: 'full'}
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]
