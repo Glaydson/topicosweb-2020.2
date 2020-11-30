@@ -41,7 +41,9 @@
                         <td>{{estudante.nome}}</td>
                         <td>{{estudante.sexo | sexoAbreviado}}</td>
                         <td>{{estudante.planeta}}</td>
-                        <jedi-altura [altura] = 'estudante.altura' [alturaMaxima] = 'alturaMaxima'></jedi-altura>
+                        <td>
+                            <jedi-altura [altura] = 'estudante.altura' [alturaMaxima] = 'alturaMaxima'></jedi-altura>
+                        </td>
                     </tr>
                 </tbody>
             </table>
