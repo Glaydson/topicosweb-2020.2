@@ -11,6 +11,7 @@ import { ConverteParaEspacoPipe } from './compartilhado/converte-para-espaco.pip
 import { ProdutoDetalheComponent } from './produtos/produto-detalhe.component';
 import { BemVindoComponent } from './home/bem-vindo.component';
 import { RouterModule } from '@angular/router';
+import { ProdutoDetalheGuard } from './produtos/produto-detalhe.guard';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { RouterModule } from '@angular/router';
     HttpClientModule,
     RouterModule.forRoot([
       { path: 'produtos', component: ListaProdutosComponent },
-      { path: 'produtos/:id', component: ProdutoDetalheComponent },
+      { path: 'produtos/:id', 
+        canActivate: [ProdutoDetalheGuard], component: ProdutoDetalheComponent },
       { path: 'bemvindo', component: BemVindoComponent },
       { path: '', redirectTo: 'bemvindo', pathMatch: 'full'},
       { path: '**', redirectTo: 'bemvindo', pathMatch: 'full'}

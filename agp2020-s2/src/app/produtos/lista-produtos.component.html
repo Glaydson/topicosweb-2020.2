@@ -41,7 +41,11 @@
                                 [style.margin.px] = 'margemImagem'
                                 >
                         </td>
-                        <td>{{produto.nomeProduto}}</td>
+                        <td>
+                            <a [routerLink] = "['/produtos', produto.id]">
+                                {{produto.nomeProduto}}
+                            </a>
+                        </td>
                         <td>{{produto.codigoProduto | lowercase | converteParaEspaco: '-'}}</td>
                         <td>{{produto.dataLancamento}}</td>
                         <td>{{produto.preco | currency: 'BRL' : 'symbol' : '1.2-2'}}</td>

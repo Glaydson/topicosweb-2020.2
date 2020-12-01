@@ -2,6 +2,7 @@ import { IProduto } from "./produto";
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
+import { tap, catchError } from 'rxjs/operators';
 
 @Injectable({
     providedIn: 'root'
@@ -14,6 +15,15 @@ export class ProdutoService {
 
     getProdutos(): Observable<IProduto[]> {
         return this.http.get<IProduto[]>(this.produtoUrl + '/todos'); 
+    }
+
+    getProduto(id: string): Observable<IProduto> {
+      const url = `${this.produtoUrl}/${id}`;
+      return this.http.get<IProduto>(url)
+        .pipe(
+          tap(data => console.log('getProduto: ' + JSON.stringify(data))),
+          catchError(this.trataErro)
+        );
     }
 
     private trataErro(erro: HttpErrorResponse) {
