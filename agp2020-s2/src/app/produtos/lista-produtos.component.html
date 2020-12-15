@@ -54,7 +54,13 @@
                                 [rating] = 'produto.rating'
                                 (ratingClicado) = 'onRatingClicado($event)'
                             ></gp-star>
-                        </td>                  
+                        </td>  
+                        <td>
+                            <button class="btn btn-outline-primary btn-sm"
+                                  [routerLink]="['/produtos', produto.id, 'editar']">
+                                         Editar
+                            </button>
+                       </td> 
                     </tr>
                 </tbody>
             </table>

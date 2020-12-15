@@ -1,0 +1,139 @@
+<div class="card">
+    <div class="card-header">
+      {{tituloPagina}}
+    </div>
+  
+    <div class="card-body">
+        <form novalidate
+            (ngSubmit)="salvarProduto()"
+            [formGroup]="formProduto">
+
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                       for="idNomeProduto">Nome Produto</label>
+                <div class="col-md-8">
+                  <input class="form-control"
+                         id="idNomeProduto"
+                         type="text"
+                         placeholder="Nome (obrigatório)"
+                         formControlName="nomeProduto"
+                         [ngClass]="{'is-invalid': displayMessage.nomeProduto }" />
+                  <span class="invalid-feedback">
+                    {{displayMessage.nomeProduto}}
+                  </span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                       for="idCodigoProduto">Código Produto</label>
+                <div class="col-md-8">
+                  <input class="form-control"
+                         id="idCodigoProduto"
+                         type="text"
+                         placeholder="Código (obrigatório)"
+                         formControlName="codigoProduto"
+                         [ngClass]="{'is-invalid': displayMessage.codigoProduto}" />
+                  <span class="invalid-feedback">
+                    {{displayMessage.codigoProduto}}
+                  </span>
+                </div>
+            </div>
+      
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                       for="idDescricao">Descrição</label>
+                <div class="col-md-8">
+                  <textarea class="form-control"
+                            id="idDescricao"
+                            placeholder="Descrição"
+                            rows=3
+                            formControlName="descricao"
+                            [ngClass]="{'is-invalid': displayMessage.descricao}"></textarea>
+                  <span class="invalid-feedback">
+                    {{ displayMessage.descricao}}
+                  </span>
+                </div>
+            </div>
+
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                       for="idDataLancamento">Data de Lançamento</label>
+                <div class="col-md-8">
+                  <input class="form-control"
+                         id="idDataLancamento"
+                         type="date"
+                         formControlName="dataLancamento"
+                         [ngClass]="{'is-invalid': displayMessage.dataLancamento}" />
+                  <span class="invalid-feedback">
+                    {{displayMessage.dataLancamento}}
+                  </span>
+                </div>
+            </div>
+        
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                       for="idPreco">Preço</label>
+                <div class="col-md-8">
+                  <input class="form-control"
+                         id="idPreco"
+                         type="text"
+                         placeholder="Preço em R$"
+                         formControlName="preco"
+                         [ngClass]="{'is-invalid': displayMessage.preco}" />
+                  <span class="invalid-feedback">
+                    {{displayMessage.preco}}
+                  </span>
+                </div>
+            </div>
+        
+            <div class="form-group row mb-2">
+                <label class="col-md-2 col-form-label"
+                       for="idRating">Rating (1-5)</label>
+                <div class="col-md-8">
+                  <input class="form-control"
+                         id="idRating"
+                         type="text"
+                         placeholder="Rating (1-5)"
+                         formControlName="rating"
+                         [ngClass]="{'is-invalid': displayMessage.rating}" />
+                  <span class="invalid-feedback">
+                    {{displayMessage.rating}}
+                  </span>
+                </div>
+            </div>
+        
+            <div class="form-group row mb-2">
+                <div class="offset-md-2 col-md-6">
+                  <button class="btn btn-primary mr-4"
+                          style="width:100px;"
+                          type="submit"
+                          [title]="formProduto.valid ? 'Salvar seus dados' : 'Desabilitado até que os dados estejam válidos'"
+                          [disabled]="!formProduto.valid">
+                    Salvar
+                  </button>
+                  <button class="btn btn-outline-secondary mr-4"
+                          style="width:100px;"
+                          type="button"
+                          title="Cancelar suas edições"
+                          [routerLink]="['/produtos']">
+                    Cancelar
+                  </button>
+                  <button class="btn btn-outline-warning mr-4"
+                          style="width:100px"
+                          type="button"
+                          title="Deletar este produto"
+                          (click)="deletarProduto()">
+                    Deletar
+                  </button>
+                </div>
+            </div>
+        
+
+        </form>
+    </div>
+  
+    <div class="alert alert-danger"
+         *ngIf="errorMessage">{{errorMessage}}
+    </div>
+</div>

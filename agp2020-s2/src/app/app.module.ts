@@ -31,6 +31,7 @@ import { ProdutoDetalheGuard } from './produtos/produto-detalhe.guard';
       { path: 'produtos', component: ListaProdutosComponent },
       { path: 'produtos/:id', 
         canActivate: [ProdutoDetalheGuard], component: ProdutoDetalheComponent },
+      { path: 'produtos/:id/editar', component: EditarProdutoComponent }.
       { path: 'bemvindo', component: BemVindoComponent },
       { path: '', redirectTo: 'bemvindo', pathMatch: 'full'},
       { path: '**', redirectTo: 'bemvindo', pathMatch: 'full'}
