@@ -1,5 +1,5 @@
 export interface IProduto {
-    id: string;
+    id: number;
     nomeProduto: string;
     codigoProduto: string;
     dataLancamento: string;

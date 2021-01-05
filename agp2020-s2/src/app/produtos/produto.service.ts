@@ -8,6 +8,15 @@ import { tap, catchError } from 'rxjs/operators';
     providedIn: 'root'
 })
 export class ProdutoService {
+    deletarProduto(id: number) {
+        throw new Error('Method not implemented.');
+    }
+    criarProduto(p: any) {
+        throw new Error('Method not implemented.');
+    }
+    atualizarProduto(p: any) {
+        throw new Error('Method not implemented.');
+    }
 
     private produtoUrl = '//localhost:8080/produtosapi/produtos';
 
