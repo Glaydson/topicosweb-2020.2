@@ -8,6 +8,9 @@ import { ListaEstudantesComponent } from './estudantes/lista-estudantes.componen
 import { SexoPipe } from './compartilhado/sexo-pipe';
 import { AlturaComponent } from './compartilhado/altura.component';
 import { FormsModule } from '@angular/forms';
+import { EstudanteDetalheComponent } from './estudantes/estudante-detalhe.component';
+import { BemVindoComponent } from './home/bem-vindo.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,12 +18,22 @@ import { FormsModule } from '@angular/forms';
     ListaEstudantesComponent,
     SexoPipe,
     AlturaComponent,
+    EstudanteDetalheComponent,
+    BemVindoComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    RouterModule.forRoot([
+      { path: 'estudantes', component: ListaEstudantesComponent },
+      { path: 'estudantes/:id', component: EstudanteDetalheComponent },
+      { path: 'bemvindo', component: BemVindoComponent },
+      { path: '', redirectTo: 'bemvindo', pathMatch: 'full'},
+      { path: '**', redirectTo: 'bemvindo', pathMatch: 'full'}
+
+    ])
   ],
   providers: [],
   bootstrap: [AppComponent]

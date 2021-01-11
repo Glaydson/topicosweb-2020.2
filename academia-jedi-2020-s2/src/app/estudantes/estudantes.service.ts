@@ -20,6 +20,15 @@ export class EstudantesService {
         );
     }
 
+    getEstudante(id: string): Observable<IEstudante> {
+        const url = `${this.estudantesURL}/${id}`;
+        return this.http.get<IEstudante>(url)
+          .pipe(
+            tap(data => console.log('getEstudante: ' + JSON.stringify(data))),
+            catchError(this.trataErro)
+          );
+      }
+
     private trataErro(erro: HttpErrorResponse) {
         // Em uma aplicação real, podemos enviar o erro para alguma infraestrutura
         // remota de log, ao invés de simplesmente enviar para o console

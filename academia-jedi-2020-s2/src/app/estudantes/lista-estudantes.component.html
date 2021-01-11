@@ -38,7 +38,11 @@
                                 [style.margin.px] = 'margemImagem'
                                 >
                         </td>
-                        <td>{{estudante.nome}}</td>
+                        <td>
+                            <a [routerLink] = "['/estudantes', estudante.id]">
+                                {{estudante.nome}}
+                            </a>
+                        </td>
                         <td>{{estudante.sexo | sexoAbreviado}}</td>
                         <td>{{estudante.planeta}}</td>
                         <td>
